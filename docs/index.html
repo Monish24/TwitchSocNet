@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwitchSocNet - Twitch Community Map</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0e0e10 0%, #1a1a2e 100%);
+            color: #efeff1;
+            overflow: hidden;
+        }
+
+        #header {
+            background: linear-gradient(90deg, #18181b 0%, #1f1f23 100%);
+            padding: 20px 40px;
+            border-bottom: 3px solid #9147ff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            color: #9147ff;
+            font-size: 28px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: #adadb8;
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        #stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat {
+            background: rgba(145, 71, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(145, 71, 255, 0.3);
+            text-align: center;
+        }
+
+        .stat-label {
+            display: block;
+            color: #adadb8;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            color: #9147ff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #main-container {
+            display: flex;
+            height: calc(100vh - 90px);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        #left-panel {
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #network-container {
+            flex: 1;
+            background: rgba(24, 24, 27, 0.6);
+            border-radius: 12px;
+            border: 1px solid #2c2c34;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        #sidebar {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel {
+            background: rgba(24, 24, 27, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2c2c34;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-title {
+            color: #9147ff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #search-box {
+            width: 100%;
+            background: #1f1f23;
+            color: #efeff1;
+            border: 2px solid #2c2c34;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        #search-box:focus {
+            outline: none;
+            border-color: #9147ff;
+            box-shadow: 0 0 0 3px rgba(145, 71, 255, 0.2);
+        }
+
+        #search-results {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            background: #1f1f23;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .search-result-item:hover {
+            background: #2c2c34;
+            border-color: #9147ff;
+            transform: translateX(5px);
+        }
+
+        .game-filter-item {
+            padding: 10px 12px;
+            background: #1f1f23;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+
+        .game-filter-item:hover {
+            background: #2c2c34;
+            border-color: #9147ff;
+        }
+
+        .game-filter-item.active {
+            background: rgba(145, 71, 255, 0.2);
+            border-color: #9147ff;
+        }
+
+        .game-count {
+            background: #9147ff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        #streamer-info {
+            min-height: 200px;
+        }
+
+        .info-section {
+            background: #1f1f23;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #2c2c34;
+        }
+
+        .streamer-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c2c34;
+        }
+
+        .streamer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9147ff, #772ce8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .streamer-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #9147ff;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #2c2c34;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #adadb8;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #efeff1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .connection-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .connection-item {
+            padding: 10px;
+            background: #1f1f23;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            border-left: 3px solid #9147ff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .connection-item:hover {
+            background: #2c2c34;
+            transform: translateX(5px);
+        }
+
+        .connection-name {
+            font-weight: 600;
+            color: #efeff1;
+            margin-bottom: 4px;
+        }
+
+        .connection-reason {
+            font-size: 11px;
+            color: #adadb8;
+        }
+
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            stroke: rgba(145, 71, 255, 0.3);
+            stroke-width: 1.5px;
+        }
+
+        .node:hover {
+            stroke: #9147ff;
+            stroke-width: 3px;
+        }
+
+        .node.highlighted {
+            stroke: #9147ff;
+            stroke-width: 3px;
+        }
+
+        .link {
+            stroke: #3a3a3d;
+            stroke-opacity: 0.3;
+        }
+
+        .link.highlighted {
+            stroke: #9147ff;
+            stroke-opacity: 0.8;
+            stroke-width: 2px;
+        }
+
+        .node-label {
+            font-size: 11px;
+            font-weight: 600;
+            fill: #efeff1;
+            pointer-events: none;
+            text-anchor: middle;
+            text-shadow: 0 0 3px #0e0e10, 0 0 3px #0e0e10;
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(24, 24, 27, 0.95);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #2c2c34;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .control-title {
+            color: #9147ff;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            margin-right: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #2c2c34;
+            border-top: 4px solid #9147ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .help-text {
+            color: #adadb8;
+            font-size: 13px;
+            line-height: 1.6;
+            padding: 12px;
+            background: rgba(145, 71, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(145, 71, 255, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(145, 71, 255, 0.2);
+            border: 1px solid rgba(145, 71, 255, 0.4);
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #9147ff;
+            margin: 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f1f23;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #9147ff;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #772ce8;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="header-content">
+            <div>
+                <h1>
+                    <span>🎮</span>
+                    TwitchSocNet
+                </h1>
+                <div class="subtitle">Visualizing Twitch Communities Through Connections</div>
+            </div>
+            <div id="stats">
+                <div class="stat">
+                    <span class="stat-label">Streamers</span>
+                    <span class="stat-value" id="node-count">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Connections</span>
+                    <span class="stat-value" id="edge-count">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container">
+        <div id="left-panel">
+            <div class="panel">
+                <div class="panel-title">🔍 Search Streamers</div>
+                <input type="text" id="search-box" placeholder="Type a streamer name...">
+                <div id="search-results"></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">🎯 Filter by Game</div>
+                <div id="game-filters"></div>
+            </div>
+
+            <div class="panel">
+                <div class="help-text">
+                    <strong>How to use:</strong><br>
+                    • Click nodes to see connections<br>
+                    • Drag to rearrange<br>
+                    • Scroll to zoom<br>
+                    • Node size = viewer count<br>
+                    • Lines = shared connections
+                </div>
+            </div>
+        </div>
+
+        <div id="network-container">
+            <div id="loading">
+                <div class="loading-spinner"></div>
+                <div style="color: #9147ff; font-size: 16px; font-weight: 600;">Loading network...</div>
+            </div>
+            <svg id="graph"></svg>
+            
+            <div id="controls">
+                <div class="control-title">Legend</div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #9147ff;"></div>
+                    <span>Connection strength</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: rgba(145, 71, 255, 0.3);"></div>
+                    <span>Weaker ties</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="sidebar">
+            <div class="panel">
+                <div class="panel-title">👤 Streamer Details</div>
+                <div id="streamer-info">
+                    <div class="help-text">
+                        Click on any streamer node to see their details and connections here!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const width = document.getElementById('network-container').clientWidth;
+        const height = document.getElementById('network-container').clientHeight;
+        
+        const svg = d3.select("#graph")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g");
+
+        const zoom = d3.zoom()
+            .scaleExtent([0.2, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+        let allData;
+        let currentFilter = 'all';
+
+        d3.json("network_data.json").then(data => {
+            allData = data;
+            document.getElementById("loading").style.display = "none";
+            
+            document.getElementById("node-count").textContent = data.nodes.length;
+            document.getElementById("edge-count").textContent = data.edges.length;
+
+            // Setup search
+            const searchBox = document.getElementById("search-box");
+            const searchResults = document.getElementById("search-results");
+            
+            searchBox.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase();
+                if (query.length < 2) {
+                    searchResults.innerHTML = "";
+                    return;
+                }
+                
+                const matches = data.nodes.filter(n => 
+                    n.label.toLowerCase().includes(query) || 
+                    n.id.toLowerCase().includes(query)
+                ).slice(0, 5);
+                
+                searchResults.innerHTML = matches.map(n => `
+                    <div class="search-result-item" onclick="selectStreamer('${n.id}')">
+                        <strong>${n.label}</strong><br>
+                        <small style="color: #adadb8;">${n.game} • ${n.viewers.toLocaleString()} viewers</small>
+                    </div>
+                `).join("");
+            });
+
+            // Setup game filters
+            const gameCounts = {};
+            data.nodes.forEach(n => {
+                gameCounts[n.game] = (gameCounts[n.game] || 0) + 1;
+            });
+            
+            const sortedGames = Object.entries(gameCounts)
+                .sort((a, b) => b[1] - a[1]);
+            
+            const gameFilters = document.getElementById("game-filters");
+            gameFilters.innerHTML = `
+                <div class="game-filter-item active" onclick="filterByGame('all')">
+                    <span>All Games</span>
+                    <span class="game-count">${data.nodes.length}</span>
+                </div>
+            ` + sortedGames.map(([game, count]) => `
+                <div class="game-filter-item" onclick="filterByGame('${game}')">
+                    <span>${game}</span>
+                    <span class="game-count">${count}</span>
+                </div>
+            `).join("");
+
+            renderNetwork(data);
+        });
+
+        function renderNetwork(data) {
+            g.selectAll("*").remove();
+
+            const simulation = d3.forceSimulation(data.nodes)
+                .force("link", d3.forceLink(data.edges)
+                    .id(d => d.id)
+                    .distance(d => 100 - (d.weight * 5)))
+                .force("charge", d3.forceManyBody().strength(-300))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .force("collision", d3.forceCollide().radius(d => Math.max(8, Math.sqrt(d.viewers) / 4) + 5));
+
+            const link = g.append("g")
+                .selectAll("line")
+                .data(data.edges)
+                .join("line")
+                .attr("class", "link")
+                .attr("stroke-width", d => Math.sqrt(d.weight) * 0.5);
+
+            const node = g.append("g")
+                .selectAll("circle")
+                .data(data.nodes)
+                .join("circle")
+                .attr("class", "node")
+                .attr("r", d => Math.max(8, Math.sqrt(d.viewers) / 4))
+                .attr("fill", d => colorScale(d.game))
+                .call(drag(simulation))
+                .on("click", (event, d) => {
+                    event.stopPropagation();
+                    showStreamerInfo(d, data.edges, data.nodes);
+                })
+                .on("mouseover", function(event, d) {
+                    d3.select(this).classed("highlighted", true);
+                })
+                .on("mouseout", function(event, d) {
+                    if (!d3.select(this).classed("selected")) {
+                        d3.select(this).classed("highlighted", false);
+                    }
+                });
+
+            const label = g.append("g")
+                .selectAll("text")
+                .data(data.nodes.filter(d => d.viewers > 10000))
+                .join("text")
+                .attr("class", "node-label")
+                .attr("dy", d => Math.max(8, Math.sqrt(d.viewers) / 4) + 14)
+                .text(d => d.label);
+
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+
+                label
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y);
+            });
+
+            // Click on background to reset
+            svg.on("click", () => {
+                node.classed("highlighted", false).classed("selected", false).style("opacity", 1);
+                link.classed("highlighted", false).style("opacity", null);
+                document.getElementById("streamer-info").innerHTML = `
+                    <div class="help-text">
+                        Click on any streamer node to see their details and connections here!
+                    </div>
+                `;
+            });
+
+            window.currentNodes = node;
+            window.currentLinks = link;
+            window.currentData = data;
+        }
+
+        function showStreamerInfo(streamer, edges, nodes) {
+            const connectedEdges = edges.filter(e => 
+                e.source.id === streamer.id || e.target.id === streamer.id
+            );
+
+            const connections = connectedEdges.map(e => {
+                const otherId = e.source.id === streamer.id ? e.target.id : e.source.id;
+                const other = nodes.find(n => n.id === otherId);
+                return { node: other, edge: e };
+            }).sort((a, b) => b.edge.weight - a.edge.weight);
+
+            // Highlight
+            window.currentNodes.classed("highlighted", d => 
+                d.id === streamer.id || connections.some(c => c.node.id === d.id)
+            ).classed("selected", d => d.id === streamer.id)
+            .style("opacity", d => 
+                d.id === streamer.id || connections.some(c => c.node.id === d.id) ? 1 : 0.2
+            );
+
+            window.currentLinks.classed("highlighted", d => 
+                d.source.id === streamer.id || d.target.id === streamer.id
+            ).style("opacity", d =>
+                d.source.id === streamer.id || d.target.id === streamer.id ? 0.8 : 0.1
+            );
+
+            const info = document.getElementById("streamer-info");
+            info.innerHTML = `
+                <div class="info-section">
+                    <div class="streamer-header">
+                        <div class="streamer-avatar">${streamer.label.charAt(0).toUpperCase()}</div>
+                        <div>
+                            <div class="streamer-name">${streamer.label}</div>
+                            <div style="color: #adadb8; font-size: 12px;">@${streamer.id}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <span class="info-label">Game</span>
+                        <span class="info-value">${streamer.game}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Current Viewers</span>
+                        <span class="info-value" style="color: #9147ff;">${streamer.viewers.toLocaleString()}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Total Followers</span>
+                        <span class="info-value">${streamer.followers.toLocaleString()}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Language</span>
+                        <span class="info-value">${streamer.language.toUpperCase()}</span>
+                    </div>
+                    ${streamer.teams.length > 0 ? `
+                    <div style="margin-top: 10px;">
+                        <div class="info-label" style="margin-bottom: 8px;">Teams</div>
+                        ${streamer.teams.map(t => `<span class="badge">${t}</span>`).join('')}
+                    </div>
+                    ` : ''}
+                </div>
+
+                <div class="info-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span class="info-label" style="font-size: 14px; font-weight: 600; color: #efeff1;">Connected Streamers</span>
+                        <span class="game-count">${connections.length}</span>
+                    </div>
+                    <div class="connection-list">
+                        ${connections.slice(0, 15).map(c => {
+                            const reasons = [];
+                            if (c.edge.details.game) reasons.push(`Same game: ${c.edge.details.game}`);
+                            if (c.edge.details.teams) reasons.push(`Team: ${c.edge.details.teams.join(', ')}`);
+                            if (c.edge.details.tags) reasons.push(`Tags: ${c.edge.details.tags.slice(0, 2).join(', ')}`);
+                            if (c.edge.details.language) reasons.push(`Language: ${c.edge.details.language}`);
+                            
+                            return `
+                                <div class="connection-item" onclick="selectStreamer('${c.node.id}')">
+                                    <div class="connection-name">${c.node.label}</div>
+                                    <div class="connection-reason">${reasons.join(' • ')}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                        ${connections.length > 15 ? `<div style="text-align: center; padding: 10px; color: #adadb8; font-size: 12px;">+${connections.length - 15} more connections</div>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectStreamer(streamerId) {
+            const node = window.currentData.nodes.find(n => n.id === streamerId);
+            if (node) {
+                showStreamerInfo(node, window.currentData.edges, window.currentData.nodes);
+                
+                // Zoom to node
+                const transform = d3.zoomIdentity
+                    .translate(width / 2, height / 2)
+                    .scale(1.5)
+                    .translate(-node.x, -node.y);
+                    
+                d3.select("#graph").transition().duration(750).call(zoom.transform, transform);
+            }
+            document.getElementById("search-results").innerHTML = "";
+            document.getElementById("search-box").value = "";
+        }
+
+        function filterByGame(game) {
+            currentFilter = game;
+            
+            document.querySelectorAll('.game-filter-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.target.closest('.game-filter-item').classList.add('active');
+            
+            window.currentNodes.style("opacity", d => 
+                game === 'all' || d.game === game ? 1 : 0.15
+            );
+            
+            window.currentLinks.style("opacity", d => {
+                if (game === 'all') return null;
+                return (d.source.game === game || d.target.game === game) ? 0.3 : 0.05;
+            });
+        }
+
+        function drag(simulation) {
+            function dragstarted(event) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                event.subject.fx = event.subject.x;
+                event.subject.fy = event.subject.y;
+            }
+
+            function dragged(event) {
+                event.subject.fx = event.x;
+                event.subject.fy = event.y;
+            }
+
+            function dragended(event) {
+                if (!event.active) simulation.alphaTarget(0);
+                event.subject.fx = null;
+                event.subject.fy = null;
+            }
+
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+    </script>
+</body>
+</html>

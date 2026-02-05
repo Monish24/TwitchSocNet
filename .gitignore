@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# API keys and secrets
+.env
+config.json
+*_secrets.json
+
+# Data files
+data/raw/
+*.csv
+*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

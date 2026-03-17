@@ -1,0 +1,1159 @@
+{
+  "nodes": [
+    {
+      "id": "moistcr1tikal",
+      "label": "moistcr1tikal",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "forsen",
+      "label": "forsen",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "ludwig",
+      "label": "Ludwig",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "nmplol",
+      "label": "Nmplol",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "tarik",
+      "label": "tarik",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "lirik",
+      "label": "LIRIK",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "moonmoon",
+      "label": "MOONMOON",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "hasanabi",
+      "label": "HasanAbi",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "pokimane",
+      "label": "pokimane",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "trainwreckstv",
+      "label": "Trainwreckstv",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "cyr",
+      "label": "cyr",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "myth",
+      "label": "Myth",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "sodapoppin",
+      "label": "sodapoppin",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "sykkuno",
+      "label": "Sykkuno",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "esfandtv",
+      "label": "EsfandTV",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "summit1g",
+      "label": "summit1g",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    },
+    {
+      "id": "xqc",
+      "label": "xQc",
+      "size": 0.0,
+      "game": "Unknown",
+      "viewers": 0,
+      "followers": 0,
+      "language": "en",
+      "teams": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "cyr",
+      "target": "xqc",
+      "weight": 258,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "xqc",
+      "weight": 807,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "lirik",
+      "weight": 499,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "xqc",
+      "weight": 2430,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "moonmoon",
+      "weight": 503,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "xqc",
+      "weight": 479,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "xqc",
+      "weight": 233,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "hasanabi",
+      "weight": 154,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "xqc",
+      "weight": 386,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "summit1g",
+      "target": "xqc",
+      "weight": 760,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "xqc",
+      "weight": 596,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "summit1g",
+      "weight": 189,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "tarik",
+      "weight": 55,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "xqc",
+      "weight": 129,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "summit1g",
+      "target": "tarik",
+      "weight": 304,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "tarik",
+      "target": "xqc",
+      "weight": 218,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "summit1g",
+      "weight": 157,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "xqc",
+      "weight": 227,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "forsen",
+      "weight": 56,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "forsen",
+      "weight": 91,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sodapoppin",
+      "target": "xqc",
+      "weight": 658,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "lirik",
+      "weight": 151,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "summit1g",
+      "weight": 116,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "summit1g",
+      "weight": 506,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "pokimane",
+      "target": "xqc",
+      "weight": 71,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "tarik",
+      "weight": 63,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "moonmoon",
+      "weight": 104,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "sodapoppin",
+      "weight": 642,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "sodapoppin",
+      "weight": 603,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "sodapoppin",
+      "weight": 223,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sykkuno",
+      "target": "xqc",
+      "weight": 37,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "moonmoon",
+      "weight": 151,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "summit1g",
+      "weight": 151,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "esfandtv",
+      "weight": 227,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "summit1g",
+      "weight": 218,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sodapoppin",
+      "target": "summit1g",
+      "weight": 333,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "hasanabi",
+      "weight": 349,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "moistcr1tikal",
+      "weight": 36,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "moistcr1tikal",
+      "weight": 85,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "sodapoppin",
+      "weight": 188,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "sodapoppin",
+      "weight": 37,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "sodapoppin",
+      "weight": 372,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "ludwig",
+      "weight": 173,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "moonmoon",
+      "weight": 714,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "lirik",
+      "weight": 230,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sykkuno",
+      "target": "tarik",
+      "weight": 12,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "trainwreckstv",
+      "target": "xqc",
+      "weight": 12,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "tarik",
+      "weight": 25,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "ludwig",
+      "weight": 63,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "sodapoppin",
+      "weight": 498,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "moonmoon",
+      "weight": 110,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "moistcr1tikal",
+      "weight": 39,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "myth",
+      "weight": 80,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "lirik",
+      "weight": 124,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "myth",
+      "weight": 24,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "myth",
+      "weight": 38,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "summit1g",
+      "weight": 113,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "ludwig",
+      "weight": 303,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "pokimane",
+      "weight": 17,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "myth",
+      "weight": 48,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "myth",
+      "weight": 79,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "pokimane",
+      "weight": 16,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "moistcr1tikal",
+      "weight": 43,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "moonmoon",
+      "weight": 61,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "sodapoppin",
+      "weight": 118,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "tarik",
+      "weight": 125,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "pokimane",
+      "weight": 9,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "hasanabi",
+      "weight": 117,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "myth",
+      "weight": 14,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "summit1g",
+      "weight": 74,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "summit1g",
+      "weight": 62,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "nmplol",
+      "target": "xqc",
+      "weight": 4,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "trainwreckstv",
+      "weight": 3,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "moistcr1tikal",
+      "weight": 105,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "sykkuno",
+      "weight": 6,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "summit1g",
+      "target": "sykkuno",
+      "weight": 7,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "myth",
+      "weight": 15,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "tarik",
+      "weight": 20,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "sykkuno",
+      "weight": 9,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "tarik",
+      "weight": 14,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "sykkuno",
+      "weight": 8,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "moistcr1tikal",
+      "weight": 55,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "sykkuno",
+      "weight": 11,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "sykkuno",
+      "weight": 4,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "tarik",
+      "weight": 11,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "ludwig",
+      "weight": 82,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "pokimane",
+      "weight": 8,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "pokimane",
+      "weight": 66,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "moonmoon",
+      "weight": 434,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "ludwig",
+      "weight": 64,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "sykkuno",
+      "weight": 54,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "sodapoppin",
+      "weight": 29,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sodapoppin",
+      "target": "tarik",
+      "weight": 42,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "pokimane",
+      "weight": 18,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "pokimane",
+      "weight": 42,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "pokimane",
+      "weight": 11,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "tarik",
+      "weight": 10,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "tarik",
+      "weight": 56,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "pokimane",
+      "target": "tarik",
+      "weight": 17,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "pokimane",
+      "target": "sodapoppin",
+      "weight": 16,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "sykkuno",
+      "weight": 16,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "myth",
+      "weight": 23,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "sykkuno",
+      "weight": 5,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "sykkuno",
+      "weight": 7,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "sodapoppin",
+      "target": "sykkuno",
+      "weight": 7,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "summit1g",
+      "target": "trainwreckstv",
+      "weight": 2,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "nmplol",
+      "weight": 7,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "pokimane",
+      "target": "summit1g",
+      "weight": 12,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "pokimane",
+      "target": "sykkuno",
+      "weight": 9,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "pokimane",
+      "weight": 3,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "nmplol",
+      "weight": 7,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "hasanabi",
+      "target": "nmplol",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "lirik",
+      "target": "nmplol",
+      "weight": 3,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moonmoon",
+      "target": "nmplol",
+      "weight": 3,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "nmplol",
+      "target": "sodapoppin",
+      "weight": 6,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "forsen",
+      "target": "nmplol",
+      "weight": 4,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "cyr",
+      "target": "trainwreckstv",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "esfandtv",
+      "target": "trainwreckstv",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "moistcr1tikal",
+      "target": "nmplol",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "myth",
+      "target": "nmplol",
+      "weight": 2,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "nmplol",
+      "target": "summit1g",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    },
+    {
+      "source": "ludwig",
+      "target": "nmplol",
+      "weight": 1,
+      "types": [
+        "chat_overlap"
+      ]
+    }
+  ],
+  "stats": {
+    "total_nodes": 17,
+    "total_edges": 122,
+    "collection_date": "2026-03-17T02:55:45.338076",
+    "data_source": "scraped_chat_logs",
+    "original_scrape_date": "2026-02-05T15:11:28.417436"
+  }
+}

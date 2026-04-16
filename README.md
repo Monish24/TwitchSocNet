@@ -1,6 +1,6 @@
 # TwitchSocNet
 
-An interactive social network analysis and visualization of the Twitch streaming community.
+interactive social network analysis and visualization of the Twitch streaming community.
 
 ## Overview
 TwitchSocNet maps connections between Twitch streamers, revealing community clusters, collaborations, and the social fabric of live streaming.
